@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --uh-principal: #03a678;
+  --uh-principal-luz: #33d6a8;
+  --uh-accent: #f27405;
+  --uh-accent-luz: #ff973c;
+  --uh-bg: #014040;
+  --uh-card: #90f5e2;
+  --uh-subcard: #33d6b8;
+  --uh-text: #011111;
+  --uh-text-muted: #457474;
+  --uh-success: #02fc87;
+  --uh-danger: #ec2f04;
+  --uh-border: #05b3b3;
+  --uh-radius: 0.6rem;
+  --uh-round: 1rem;
+  --uh-shadow: 0px -0px 50px rgba(1, 31, 19, 0.767);
+  --uh-hard-shadow: 30px 27px 12px -14px rgba(1, 31, 19, 0.767);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--uh-bg);
+  color: var(--uh-text);
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  position: fixed;
+  border: none;
+  border-radius: var(--uh-radius);
+  background-color: var(--uh-accent);
+  cursor: pointer;
+  width: 4rem;
+  height: 1.5rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--uh-accent-luz);
+  width: 4.2rem;
+  height: 1.7rem;
+}

@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.cartel {
+
+    gap: 2rem;
+
+    h1 {
+        color: aliceblue;
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        display: flex;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        margin-top: 9rem;
+        width: 9rem;
+        height: 3rem;
+        border: none;
+        border-radius: var(--uh-round);
+        background-color: var(--uh-accent);
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:focus {
+        background-color: var(--uh-accent-luz);
+    }
+}
+
+.btn-back {
+    position: fixed;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--uh-radius);
+    background-color: var(--uh-accent);
+    cursor: pointer;
+    width: 7rem;
+    height: 2rem;
+    font-weight: 600;
+}
