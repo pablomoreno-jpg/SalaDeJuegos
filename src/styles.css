@@ -4,13 +4,15 @@
   --uh-accent: #f27405;
   --uh-accent-luz: #ff973c;
   --uh-bg: #014040;
-  --uh-card: #90f5e2;
-  --uh-subcard: #33d6b8;
+  --uh-card: #c5fff5;
+  --uh-subcard: #4ceccf;
+  --uh-fontweight: 600;
   --uh-text: #011111;
   --uh-text-muted: #457474;
   --uh-success: #02fc87;
   --uh-danger: #ec2f04;
   --uh-border: #05b3b3;
+  --uh-cardAlert: #ffc5c5;
   --uh-radius: 0.6rem;
   --uh-round: 1rem;
   --uh-shadow: 0px -0px 50px rgba(1, 31, 19, 0.767);
@@ -25,18 +27,67 @@ body {
 }
 
 .btn-primary {
-  position: fixed;
-  border: none;
+  color: white;
+  border: solid var(--uh-accent);
   border-radius: var(--uh-radius);
   background-color: var(--uh-accent);
   cursor: pointer;
-  width: 4rem;
+  margin-top: 0.5rem;
+  margin-left: 0.2rem;
+  width: fit-content;
   height: 1.5rem;
+  font-size: medium;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: var(--uh-accent-luz);
-  width: 4.2rem;
-  height: 1.7rem;
+  background-color: white;
+  color: var(--uh-accent);
+  transform: scale(1.05);
+}
+
+
+.btn-secundary {
+
+  border: solid var(--uh-accent);
+  border-radius: var(--uh-radius);
+  background-color: white;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  margin-left: 0.2rem;
+  width: fit-content;
+  height: 1.5rem;
+  font-size: medium;
+  color: var(--uh-accent);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn-secundary:hover,
+.btn-secundary:focus {
+  background-color: var(--uh-accent);
+  color: white;
+  transform: scale(1.05);
+}
+
+
+.alert {
+  position: absolute;
+  right: -10rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--uh-cardAlert);
+  color: var(--uh-danger);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }

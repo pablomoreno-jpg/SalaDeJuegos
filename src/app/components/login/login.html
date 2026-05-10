@@ -1,12 +1,49 @@
 <main>
+    <button class="btn-primary" routerLink="/registro">registrarse</button>
+
     <div class="container">
+        <h1>Inciar sesion</h1>
         <div class="form-card">
-            <h1>Inciar sesion</h1>
-            <form>
-                <input type="text" placeholder="Email">
-                <input type="text" placeholder="password">
-                <button (click)="logIn()">log in</button>
+            <form (ngSubmit)="onSumit()" #loginForm="ngForm">
+                <div class="data-input">
+                    <input type="email" class="form-control" [(ngModel)]="email" name="email" required email
+                        #emailField="ngModel" placeholder="email">
+
+                    @if(emailField.touched && emailField.errors?.['required']){
+                    <span class="alert">contraseña invalida</span>
+                    }
+
+                    @if(emailField.touched && emailField.errors?.['email']){
+                    <span class="alert">email invalido</span>
+                    }
+                </div>
+
+                <div class="data-input">
+                    <input type="password" placeholder="password" [(ngModel)]="password" name="passowrd" required
+                        password #passField="ngModel">
+
+                    @if(passField.touched && passField.errors?.['required']){
+                    <span class="alert">contraseña invalida</span>
+                    }
+
+                </div>
+
+                <button type="submit" [disabled]="loginForm.invalid || loading()">
+                    log in
+                </button>
+
             </form>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="error-contaier" [style.visibility]="errorMensaje() != ''  ? 'visible' : 'hidden' ">
+        <div class="mensaje-error">
+            <div>{{errorMensaje()}}</div>
         </div>
     </div>
+
 </main>

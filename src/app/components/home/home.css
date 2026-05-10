@@ -1,50 +1,94 @@
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+
+}
+
+.usuario-contaier {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+.usuario-nombre {
+    color: white;
+    font-weight: var(--uh-fontweight);
+    margin-right: 0.5rem;
+}
+
+.dashboard {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem
+}
+
+.logeo {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .cartel {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    color: white;
 
-    gap: 2rem;
-
-    h1 {
-        color: aliceblue;
-        margin-bottom: 2rem;
-    }
-
-    .btn {
-        display: flex;
-        margin: auto;
-        align-items: center;
-        justify-content: center;
-        margin-top: 9rem;
-        width: 9rem;
-        height: 3rem;
-        border: none;
-        border-radius: var(--uh-round);
-        background-color: var(--uh-accent);
-        font-size: 1.2rem;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    .btn:hover,
-    .btn:focus {
-        background-color: var(--uh-accent-luz);
-    }
 }
 
-.btn-back {
-    position: fixed;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--uh-radius);
+.saludo {
+    margin-top: 7.5rem;
+}
+
+
+.nav-bar {
+
+    display: flex;
+
+    width: 40rem;
+    height: 3rem;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
     background-color: var(--uh-accent);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn {
+    flex: 1;
+    color: white;
+    border: none;
+    outline: none;
     cursor: pointer;
-    width: 7rem;
-    height: 2rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--uh-accent);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+.nav-btn:last-child {
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+}
+
+.nav-btn:hover {
+    background-color: white;
+    color: var(--uh-accent);
+}
+
+.nav-btn:first-child {
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
 }

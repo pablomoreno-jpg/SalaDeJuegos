@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    h1 {
+        color: white;
+        margin-bottom: 3rem;
+    }
+}
+
+.form-register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--uh-card);
+    border: solid var(--uh-border);
+    border-radius: var(--uh-radius);
+    padding: 1.5rem;
+    width: 23rem;
+    height: 25rem;
+
+    button{
+        margin-top: 1rem;
+        width: 10rem;
+        height: 2.5rem;
+        background-color: var(--uh-accent);
+        border: none;
+        border-radius: var(--uh-radius);
+        cursor: pointer;
+    }
+
+}
+
+.form-data {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.data-input {
+
+    display: flex;
+    position: relative;
+
+    input {
+        width: 20rem;
+        height: 2rem;
+        border: none;
+        background-color: var(--uh-subcard);
+        border-radius: var(--uh-radius);
+        padding-left: 1rem;
+    }
+
+}
+
+.alert {
+    position: absolute;
+    right: -9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--uh-cardAlert);
+    color: var(--uh-danger);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.mensaje-error {
+
+    background-color: var(--uh-cardAlert);
+    color: var(--uh-danger);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}

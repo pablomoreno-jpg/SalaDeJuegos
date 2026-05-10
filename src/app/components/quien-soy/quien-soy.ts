@@ -21,8 +21,4 @@ export class QuienSoy implements OnInit {
     this.gitservice.obtenerUsuario();
   }
 
-  volver(){
-    this._location.back();
-  }
-
 }
