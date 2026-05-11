@@ -121,3 +121,77 @@
     }
 
 }
+
+.speeddial-button {
+    position: fixed;
+    right: 30px;
+    bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 50;
+}
+
+.speed-dial-menu {
+    position: absolute;
+    bottom: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 16px;
+
+    background: var(--uh-card);
+    border-radius: 16px;
+
+    border: 1px solid var(--uh-principal-luz);
+
+    box-shadow: 0px 15px 60px -4px rgba(16, 24, 40, 0.10);
+}
+
+.menu-item {
+    border: none;
+    background: transparent;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    background: var(--uh-principal-luz);
+}
+
+.main-button {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: var(--uh-accent);
+    color: white;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.main-button:hover {
+    background: var(--uh-accent-luz);
+}
+
+.hidden {
+    display: none;
+}

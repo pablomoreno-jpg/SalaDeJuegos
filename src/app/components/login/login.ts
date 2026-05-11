@@ -14,10 +14,17 @@ export class Login {
 
   private auth = inject(AuthServise);
 
+  mostrarMenu = false;
   email = '';
   password = '';
   loading = signal(false);
   errorMensaje = signal('');
+
+  usuariosRapidos =
+    [{ email: 'usuario1@gmail.com', passowrd: 'mateo1234' },
+    { email: 'usuario2@gmail.com', passowrd: 'valen4567' },
+    { email: 'usuario3@gmail.com', passowrd: 'lucas9877' }];
+
 
   async onSumit() {
     this.loading.set(true);
@@ -28,4 +35,13 @@ export class Login {
 
     this.loading.set(false);
   }
+
+  inicioRapido(index: number) {
+
+    const user = this.usuariosRapidos[index];
+
+    this.email = user.email;
+    this.password = user.passowrd;
+  }
+
 }

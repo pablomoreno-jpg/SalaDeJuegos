@@ -46,4 +46,21 @@
         </div>
     </div>
 
+
+    <div class="speeddial-button">
+
+        <div class="speed-dial-menu" [class.hidden]="!mostrarMenu">
+
+            <button class="menu-item" (click)="inicioRapido(2)">usuario 3</button>
+            <button class="menu-item" (click)="inicioRapido(1)">usuario 2</button>
+            <button class="menu-item" (click)="inicioRapido(0)">usuario 1</button>
+
+        </div>
+
+        <button class="main-button" (click)="mostrarMenu = !mostrarMenu">
+            +
+        </button>
+
+    </div>
+
 </main>
