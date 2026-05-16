@@ -14,7 +14,16 @@ export class AuthServise {
     userMail = computed(() => this.user()?.email ?? '');
 
     constructor() {
-        this.chekSesion();
+        this.supabase.getCliente().auth.onAuthStateChange((_event, session) => {
+            if (session?.user) {
+                this.user.set({
+                    id: session.user.id,
+                    email: session.user.email ?? '',
+                });
+            } else {
+                this.user.set(null);
+            }
+        });
     }
 
 
@@ -33,7 +42,10 @@ export class AuthServise {
 
         const { data, error } = await this.supabase.getCliente().auth.signInWithPassword({ email, password })
 
-        if (error) console.log(error.message);
+        if (error) {
+            console.log(error.message);
+            return false;
+        };
 
         if (data.user) {
             this.user.set({
@@ -74,14 +86,28 @@ export class AuthServise {
 
     }
 
-
     async logOut() {
         const { error } = await this.supabase.getCliente().auth.signOut()
 
         if (error) console.log(error.message);
 
+        this.user.set(null);
+
         this.router.navigate(['/login'])
 
     }
+
+    async getFullNameUser(): Promise<{ nombre: string, apellido: string } | null> {
+
+        const { data, error } = await this.supabase.getCliente()
+            .from('usuarios').select('nombre,apellido')
+            .eq('email', this.userMail()).single()
+
+        if (error) console.log(error.message);
+
+        return data;
+
+    }
+
 }
 

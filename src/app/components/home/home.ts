@@ -2,8 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Location } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthServise } from '../../services/auth';
-import { UsuariosService } from '../../services/usuariosService';
-
+import { effect } from "@angular/core";
 
 @Component({
   selector: 'app-home',
@@ -11,24 +10,27 @@ import { UsuariosService } from '../../services/usuariosService';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit {
+export class Home {
 
   auth = inject(AuthServise);
   nombreUsuario = signal('')
   mostrar = signal(false);
-  usuario = inject(UsuariosService);
 
-  constructor(private _Location: Location) { }
+  constructor(private _Location: Location) {
 
-  async ngOnInit(){
+    effect(async () => {
 
-    this.nombreUsuario.set(await this.obtenerNombre())
+      const mail = this.auth.userMail();
 
+      if (!mail) return;
+
+      this.nombreUsuario.set(await this.obtenerNombre(mail));
+    })
   }
 
-  async obtenerNombre(): Promise<string> {
+  async obtenerNombre(mail: string): Promise<string> {
 
-    const usuario = await this.usuario.getFullName(this.auth.userMail());
+    const usuario = await this.auth.getFullNameUser();
 
     if (usuario) {
 
@@ -42,11 +44,11 @@ export class Home implements OnInit {
     return '';
   }
 
-
-  toggleMostar() {
-    this.mostrar.set(!this.mostrar());
-  }
-
+  /*
+    toggleMostar() {
+      this.mostrar.set(!this.mostrar());
+    }
+  */
 
   cerraSesion() {
     this.auth.logOut()

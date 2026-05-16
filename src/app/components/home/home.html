@@ -12,20 +12,23 @@
     <div class="container">
 
         <nav class="nav-bar">
-            <button class="nav-btn" (click)="toggleMostar()" routerLink="quienSoy" routerLinkActive="active">quien
+            <button class="nav-btn" routerLink="ahorcado" routerLinkActive="active" (click)="mostrar.set(true)">
+                ahorcado</button>
+            <button class="nav-btn" routerLink="mayorMenor" routerLinkActive="active" (click)="mostrar.set(true)">mayor o
+                menor</button>
+            <button class="nav-btn" routerLink="quienSoy" routerLinkActive="active" (click)="mostrar.set(true)">quien
                 soy</button>
-
         </nav>
 
         @if(mostrar()){
         <router-outlet></router-outlet>
         }
-        @else{
+        @else {
         <div class="cartel">
             <h1>Bienvenido {{nombreUsuario()}}</h1>
         </div>
-
         }
+
     </div>
 
     }
