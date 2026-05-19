@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+
+.card {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--uh-card);
+  border: solid var(--uh-border);
+  border-radius: var(--uh-radius);
+  box-shadow: var(--uh-shadow), var(--uh-hard-shadow);
+
+  .img {
+    float: left;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background-color: var(--uh-subcard);
+    padding: 1rem;
+    border-radius: var(--uh-radius);
+  }
+
+  .info h1 {
+    margin: 0;
+    line-height: 1.1;
+  }
+  .info small {
+    font-size: 1rem;
+    color: var(--uh-text-muted);
+    font-style: italic;
+  }
+
+  .info span {
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  .info p {
+    margin: 0.2rem 0;
+  }
+}
+

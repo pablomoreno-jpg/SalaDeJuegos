@@ -1,59 +1,32 @@
 # SalaDeJuegos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+Primer Parcial de la materia **Programacion IV** para la universidad **UTN FRA**
 
-## Development server
+## Alumno:
+Moreno Pablo
 
-To start a local development server, run:
+## Deployment:
+[Sala de juegos](https://sala-de-juegos-bay.vercel.app)
 
-```bash
-ng serve
-```
+## Tecnologias Usadas:
+- Supabase
+- Angular
+- Vercel
+- Visual Studio Code
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+# Sprint #1
+El Sprint #1 contiene un prototipo inicial de las funcionalidades básicas de la aplicación, incluyendo:
+- Login de usuarios
+- Registro
+- Pantalla Home
 
-## Code scaffolding
+En esta versión, los usuarios pueden acceder al Home sin necesidad de estar autenticados. El Home cuenta con un botón que permite visualizar información del usuario obtenida desde la API de GitHub.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Además, este sprint presenta el diseño visual inicial de la aplicación y una navegación básica entre componentes
 
-```bash
-ng generate component component-name
-```
+# Sprint #2
+El Sprint #2 incorpora todas las funcionalidades desarrolladas en el Sprint #1.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+En esta versión, los usuarios pueden iniciar sesión o registrarse para acceder a las funcionalidades principales de la aplicación. En caso de ingresar de forma anónima, la pantalla Home informa al usuario que debe iniciar sesión o registrarse.
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+La pantalla de Login también incorpora un botón desplegable con tres usuarios previamente registrados para facilitar las pruebas de acceso.

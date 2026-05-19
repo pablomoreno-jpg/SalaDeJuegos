@@ -1,0 +1,20 @@
+<main>
+
+    <button class="btn-primary" (click)="volver()">volver</button>
+    @if (soy(); as usuario){
+    <div class="container">
+        <div class="card">
+            <img class="img" src={{usuario.avatar}} alt="avatar">
+            <div class="info">
+                <h1>{{usuario.nombre.toUpperCase()}}</h1>
+                <small>{{usuario.user}}</small>
+                <span>Ubicacion: {{usuario.ubicacion}}</span>
+                <span>BIOGRAFIA:</span>
+                <p>{{usuario.bio}}</p>
+                <span>trabajando desde:<br>{{usuario.creacion | date:'dd/MM/yyyy'}}</span>
+            </div>
+
+        </div>
+    </div>
+    }
+</main>
