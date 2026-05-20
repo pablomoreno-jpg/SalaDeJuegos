@@ -1,9 +1,48 @@
 <main>
-    <button class="btn-back" (click)="voler()">cerra sesion</button>
-    <div class="container">
-        <div class="cartel">
-            <h1>Bienvenido Usuario</h1>
-            <button class="btn" (click)="quienSoy()">quien soy</button>
-        </div>
+
+
+    @if(auth.user()){
+
+    <div class="usuario-contaier">
+        <button class="btn-primary" (click)="cerraSesion()">cerra sesion</button>
+        <span class="usuario-nombre">{{nombreUsuario()}}</span>
     </div>
+
+
+    <div class="container">
+
+        <nav class="nav-bar">
+            <button class="nav-btn" routerLink="ahorcado" routerLinkActive="active" (click)="mostrar.set(true)">
+                ahorcado</button>
+            <button class="nav-btn" routerLink="mayorMenor" routerLinkActive="active" (click)="mostrar.set(true)">mayor o
+                menor</button>
+            <button class="nav-btn" routerLink="quienSoy" routerLinkActive="active" (click)="mostrar.set(true)">quien
+                soy</button>
+        </nav>
+
+        @if(mostrar()){
+        <router-outlet></router-outlet>
+        }
+        @else {
+        <div class="cartel">
+            <h1>Bienvenido {{nombreUsuario()}}</h1>
+        </div>
+        }
+
+    </div>
+
+    }
+    @else{
+
+    <div class="logeo">
+        <button routerLink="/registro" class="btn-primary">registrarse</button>
+        <button routerLink="/login" class="btn-secundary">iniciarSesion</button>
+    </div>
+
+    <div class="saludo">
+        <h1 class="cartel">Bienvenido Anonimo por favor inicie sesion</h1>
+    </div>
+
+    }
+
 </main>

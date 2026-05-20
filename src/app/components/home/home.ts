@@ -1,25 +1,57 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthServise } from '../../services/auth';
+import { effect } from "@angular/core";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
 
-  private router = inject(Router);
+  auth = inject(AuthServise);
+  nombreUsuario = signal('')
+  mostrar = signal(false);
 
-  constructor(private _Location: Location){}
+  constructor(private _Location: Location) {
 
-  voler(){
-    this._Location.back()
+    effect(async () => {
+
+      const mail = this.auth.userMail();
+
+      if (!mail) return;
+
+      this.nombreUsuario.set(await this.obtenerNombre(mail));
+    })
   }
 
-  quienSoy(){
-    this.router.navigate([`quienSoy`])
+  async obtenerNombre(mail: string): Promise<string> {
+
+    const usuario = await this.auth.getFullNameUser();
+
+    if (usuario) {
+
+      const nombre = usuario.nombre.charAt(0).toLocaleUpperCase() + usuario.nombre.slice(1).toLocaleLowerCase()
+      const apellido = usuario.apellido.charAt(0).toLocaleUpperCase() + usuario.apellido.slice(1).toLocaleLowerCase()
+
+      return nombre + ' ' + apellido;
+
+    }
+
+    return '';
+  }
+
+  /*
+    toggleMostar() {
+      this.mostrar.set(!this.mostrar());
+    }
+  */
+
+  cerraSesion() {
+    this.auth.logOut()
   }
 
 }

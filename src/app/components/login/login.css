@@ -1,13 +1,50 @@
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding-top: 7.5rem;
+
+    h1 {
+        color: white;
+    }
+}
+
+.error-contaier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+
+}
+
+.mensaje-error {
+    background-color: var(--uh-cardAlert);
+    width: 10rem;
+    height: 3rem;
+    align-content: center;
+    text-align: center;
+    border-radius: var(--uh-round);
+    box-shadow: var(--uh-shadow);
+    color: var(--uh-danger);
+    font-size: 1rem;
+    font-weight: var(--uh-fontweight);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.text-alert {
+    display: block;
+    min-height: 20px;
+    margin-top: 0.5rem;
+    justify-content: center;
+    text-align: center;
+    color: var(--uh-danger);
+    font-weight: var(--uh-fontweight);
 }
 
 .form-card {
-    width: 30rem;
-    height: 20rem;
+    width: 25rem;
+    height: 10rem;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -25,19 +62,11 @@
         text-align: center;
     }
 
+
     form {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    form input {
-        padding: 0.75rem;
-        border-radius: var(--uh-radius);
-        border: none;
-        width: 20rem;
-        background-color: var(--uh-subcard);
-        color: var(--uh-text);
+        gap: 1rem;
     }
 
     form button {
@@ -45,17 +74,124 @@
         background-color: var(--uh-accent);
         border: none;
         border-radius: var(--uh-round);
-        margin-top: 1.3rem;
-        width: 6rem;
-        height: 3rem;
+        width: 6.5rem;
+        height: 3.5rem;
         font-size: 1.2rem;
         cursor: pointer;
+        margin-top: 0.2rem;
+
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease;
     }
 
     form button:hover,
     form button:focus {
         background-color: var(--uh-accent-luz);
-        width: 6.1rem;
-        height: 3.1rem;
+        transform: scale(1.05);
     }
+
+
+}
+
+.data-input {
+
+    display: flex;
+    position: relative;
+
+    input {
+        padding: 0.75rem;
+        border-radius: var(--uh-radius);
+        border: none;
+        width: 20rem;
+        background-color: var(--uh-subcard);
+        color: var(--uh-text);
+        padding-left: 1rem;
+    }
+
+
+    .text-alert {
+        display: block;
+        min-height: 20px;
+        margin-top: 0.5rem;
+        justify-content: center;
+        text-align: center;
+        color: var(--uh-danger);
+        font-weight: var(--uh-fontweight);
+    }
+
+}
+
+.speeddial-button {
+    position: fixed;
+    right: 30px;
+    bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 50;
+}
+
+.speed-dial-menu {
+    position: absolute;
+    bottom: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 16px;
+
+    background: var(--uh-card);
+    border-radius: 16px;
+
+    border: 1px solid var(--uh-principal-luz);
+
+    box-shadow: 0px 15px 60px -4px rgba(16, 24, 40, 0.10);
+}
+
+.menu-item {
+    border: none;
+    background: transparent;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    background: var(--uh-principal-luz);
+}
+
+.main-button {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: var(--uh-accent);
+    color: white;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.main-button:hover {
+    background: var(--uh-accent-luz);
+}
+
+.hidden {
+    display: none;
 }
