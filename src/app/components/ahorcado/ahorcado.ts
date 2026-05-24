@@ -15,7 +15,8 @@ export class Ahorcado implements OnInit {
   palabraElegida: string = "";
   letrasDePalabraElegida: string[] = [];
   letrasUsuadas: string[] = [];
-  abecedario: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  abecedario: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  letrasElegidas: number = 0;
   errores: number = 0;
   maxErrors: number = 6;
   puntuacion: number = 600;
@@ -54,6 +55,8 @@ export class Ahorcado implements OnInit {
     if (this.letrasUsuadas.includes(letra) || this.juegoTerminado) {
       return;
     }
+
+    this.letrasElegidas++;
 
     this.letrasUsuadas.push(letra);
 
@@ -115,8 +118,9 @@ export class Ahorcado implements OnInit {
 
     const juego: juegoIterface = {
       juego: 'Ahorcado',
-      puntuacion: this.puntuacion,
+      letras: this.letrasElegidas,
       tiempo: tiempo,
+      cartasAcertadas: 0,
     }
 
     const succes = await this.gameService.subirPuntuacionJuego(juego);

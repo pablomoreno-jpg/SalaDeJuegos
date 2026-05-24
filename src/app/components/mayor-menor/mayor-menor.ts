@@ -18,7 +18,7 @@ export class MayorMenor implements OnInit {
   cartaJugador?: carta;
   cartaIa?: carta;
   mostrarCarta = false;
-  puntuacion = 400;
+  aciertos = 0;
   rondaActual = 0;
   maxRondas = 3;
   juegoTerminado = false;
@@ -32,7 +32,7 @@ export class MayorMenor implements OnInit {
 
   iniciarJuego() {
     this.juegoTerminado = false;
-    this.puntuacion = 400;
+    this.aciertos = 0;
     this.rondaActual = 0;
     this.resultado = '';
     this.crearMazo();
@@ -113,9 +113,9 @@ export class MayorMenor implements OnInit {
 
     }
 
-    if (!acerto) {
+    if (acerto) {
 
-      this.puntuacion -= 100;
+      this.aciertos++;
 
     }
 
@@ -128,11 +128,8 @@ export class MayorMenor implements OnInit {
 
       this.juegoTerminado = true;
 
-      if (this.puntuacion > 0) {
+      this.guardarPuntuacion()
 
-        this.guardarPuntuacion()
-
-      }
 
     }
     else {
@@ -144,19 +141,20 @@ export class MayorMenor implements OnInit {
 
   async guardarPuntuacion() {
     const juego: juegoIterface = {
-      juego: 'MayrMenor',
-      puntuacion: this.puntuacion,
+      juego: 'MayorMenor',
+      cartasAcertadas: this.aciertos,
+      letras: 0,
       tiempo: 0,
     }
 
-    const succes = await this.gameSv.subirPuntuacionJuego(juego);
+  const succes = await this.gameSv.subirPuntuacionJuego(juego);
 
-    if(succes){
-      console.log('la puntuacion se guardo exitosamente');
-    }
+  if(succes) {
+    console.log('la puntuacion se guardo exitosamente');
+  }
     else{
-      console.log('Error al guarda la puntuacion');
-    }
+  console.log('Error al guarda la puntuacion');
+}
   }
 
 }

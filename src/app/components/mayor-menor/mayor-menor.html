@@ -2,11 +2,9 @@
     <div class="col-lg-6">
         <div class="card shadow-lg p-2">
 
-
             <h2>Mayor o Menor</h2>
-            <span>adivina si la carta es mayor menor a la tuya</span>
 
-            <h4>Puntuación: {{puntuacion}}</h4>
+            <h4>Aciertos: {{aciertos}}</h4>
 
             <h5>ronda: {{rondaActual}} / {{maxRondas}}</h5>
 
@@ -82,10 +80,6 @@
                     Juego terminado
                 </h3>
 
-                <h4>
-                    Puntuación final:
-                    {{puntuacion}}
-                </h4>
 
                 <button class="btn btn-primary" (click)="iniciarJuego()">
 

@@ -1,8 +1,9 @@
 export interface juegoIterface {
     id?: number
     juego: string,
-    tiempo: number,
-    puntuacion: number,
+    letras?:number,
+    cartasAcertadas?:number,
+    tiempo?: number,
     created_at?: Date,
     id_usuario?: string,
 }
