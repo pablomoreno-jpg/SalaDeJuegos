@@ -1,4 +1,4 @@
-import { Injectable, Inject, Signal, computed, effect, inject, signal } from "@angular/core";
+import { Injectable, computed, inject, signal, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { SupabaseService } from "./supabaseService";
 import { User } from "../models/User";
@@ -13,17 +13,25 @@ export class AuthServise {
     isAuthenticated = computed(() => this.user() !== null);
     userMail = computed(() => this.user()?.email ?? '');
 
+
     constructor() {
+        this.chekSesion()
+
         this.supabase.getCliente().auth.onAuthStateChange((_event, session) => {
+
+
             if (session?.user) {
                 this.user.set({
                     id: session.user.id,
                     email: session.user.email ?? '',
-                });
-            } else {
+                })
+            }
+            else{
                 this.user.set(null);
             }
-        });
+
+        })
+
     }
 
 
@@ -35,6 +43,9 @@ export class AuthServise {
                 id: session.user.id,
                 email: session.user.email ?? '',
             })
+        }
+        else {
+            this.user.set(null)
         }
     }
 
@@ -61,7 +72,7 @@ export class AuthServise {
 
     }
 
-    async register(emailUser: string, passwordUser: string): Promise<boolean> {
+    async register(emailUser: string, passwordUser: string): Promise<string | null> {
 
         const { data, error } = await this.supabase.getCliente().auth.signUp({
             email: emailUser,
@@ -70,10 +81,10 @@ export class AuthServise {
 
         if (error) {
             console.log(error.message);
-            return false;
+            return null;
         }
 
-        return true;
+        return data.user?.id ?? null;
 
 
     }

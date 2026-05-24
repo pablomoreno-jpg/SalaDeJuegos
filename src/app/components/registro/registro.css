@@ -1,3 +1,5 @@
+/*
+
 .container {
     display: flex;
     flex-direction: column;
@@ -84,5 +86,43 @@
     background-color: var(--uh-cardAlert);
     color: var(--uh-danger);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+*/
+
+.salir {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    .back{
+        font-size: 1.3rem;
+    }
+}
+
+.card {
+    width: 32rem;
+    background-color: var(--uh-card);
+    border: solid 1rem var(--uh-border);
+    border-radius: var(--uh-radius);
+    color: white;
+    box-shadow: var(--uh-shadow), var(--uh-hard-shadow);
+}
+
+.card-body {
+    padding: 2rem;
+    background-color: var(--uh-subcard);
+    border-radius: var(--uh-radius);
+
+}
+
+.user-icon {
+    font-size: 4rem;
+    color: white;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
 
 }

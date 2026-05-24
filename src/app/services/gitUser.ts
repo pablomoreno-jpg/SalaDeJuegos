@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { desarrolador } from '../models/desarroladorModel';
 
 @Injectable({
     providedIn: 'root',
@@ -9,7 +9,7 @@ export class GitUser {
 
     private http = inject(HttpClient);
     private URL_User = "https://api.github.com/users/pablomoreno-jpg"
-    private userGIt = signal<any | null>(null)
+    private userGIt = signal<desarrolador | null>(null)
 
     user = this.userGIt.asReadonly();
 

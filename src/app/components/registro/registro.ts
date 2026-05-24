@@ -1,11 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { Persona } from '../../models/persona';
-import { AuthServise } from '../../services/auth';
-import { SupabaseService } from '../../services/supabaseService';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { UserServices } from '../../services/usuarioService';
 
 @Component({
   selector: 'app-registro',
@@ -15,8 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class Registro {
 
-  private auth = inject(AuthServise);
-  private supabase = inject(SupabaseService)
+  private userServices = inject(UserServices);
   private rotuer = inject(Router);
   loading = signal(false);
   errorMensaje = signal('');
@@ -28,43 +26,41 @@ export class Registro {
   password: string = ''
   passwordConfirm: string = '';
 
-  constructor(private _location: Location){}
+  constructor(private _location: Location) { }
 
   async onSumit() {
 
     this.loading.set(true);
 
-    const succes = await this.auth.register(this.email, this.password);
+    const usuario: Persona = {
+      nombre: this.nombre,
+      apellido: this.apellido,
+      email: this.email,
+      edad: this.edad,
+    }
+
+    const succes = await this.userServices.registerNewUser(this.email, this.password, usuario);
 
     if (succes) {
 
-      const usuario: Persona = {
-        nombre: this.nombre,
-        apellido: this.apellido,
-        email: this.email,
-        edad: this.edad,
-      }
-
-      const { data, error } = await this.supabase.getCliente().from('usuarios').insert(usuario);
-
-      if (error) console.log(error.message, error.cause);
-
-      else {
-        this.rotuer.navigate(['/login'])
-      }
-
+      this.rotuer.navigate(['/login'])
 
     }
     else {
 
-      this.errorMensaje.set('El email ya existe en la pagina');
+      this.errorMensaje.set('Error al intentar registrar su usuario');
     }
 
     this.loading.set(false);
   }
 
+  async subirPuntuancionJuego(){
+    
+    
+  
+  }
 
-  volver(){
+  volver() {
     this._location.back();
   }
 

@@ -2,16 +2,19 @@
   --uh-principal: #03a678;
   --uh-principal-luz: #33d6a8;
   --uh-accent: #f27405;
+  --uh-subaccent: #FED9B9;
+  --uh-accent-dark: #731702;
   --uh-accent-luz: #ff973c;
   --uh-bg: #014040;
-  --uh-card: #c5fff5;
-  --uh-subcard: #4ceccf;
+  --uh-card: #02735E;
+  --uh-subcard: #03A678;
+  --uh-inputCard: #00e4a3;
   --uh-fontweight: 600;
-  --uh-text: #011111;
+  --uh-text: #190500;
   --uh-text-muted: #457474;
   --uh-success: #02fc87;
   --uh-danger: #ec2f04;
-  --uh-border: #05b3b3;
+  --uh-border: #02735E;
   --uh-cardAlert: #ffc5c5;
   --uh-radius: 0.6rem;
   --uh-round: 1rem;
@@ -19,66 +22,90 @@
   --uh-hard-shadow: 30px 27px 12px -14px rgba(1, 31, 19, 0.767);
 }
 
+html,
 body {
+  height: 100%;
+  margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: var(--uh-bg);
   color: var(--uh-text);
   font-size: 0.95rem;
+  min-height: 100vh;
+}
+
+
+
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.contenido-principal {
+  flex: 1;
+  padding-top: 150px;
+}
+
+footer {
+  margin-top: auto;
+
 }
 
 .btn-primary {
+  background-color: var(--uh-accent);
   color: white;
   border: solid var(--uh-accent);
   border-radius: var(--uh-radius);
-  background-color: var(--uh-accent);
-  cursor: pointer;
-  margin-top: 0.5rem;
-  margin-left: 0.2rem;
   width: fit-content;
-  height: 1.5rem;
-  font-size: medium;
-
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: white;
-  color: var(--uh-accent);
-  transform: scale(1.05);
-}
-
-
-.btn-secundary {
-
-  border: solid var(--uh-accent);
-  border-radius: var(--uh-radius);
-  background-color: white;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  margin-left: 0.2rem;
-  width: fit-content;
-  height: 1.5rem;
-  font-size: medium;
-  color: var(--uh-accent);
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.btn-secundary:hover,
-.btn-secundary:focus {
-  background-color: var(--uh-accent);
+.btn-primary:disabled {
+  background-color: var(--uh-accent-dark);
+  border: solid var(--uh-accent-dark);
   color: white;
-  transform: scale(1.05);
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: var(--uh-accent);
+  border: solid white;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:focus:active,
+.btn-primary.active {
+  background-color: var(--uh-accent-dark) !important;
+  border-color: var(--uh-accent-dark) !important;
+  color: white !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 
-.alert {
+
+.btn-outline-light {
+  background-color: var(--uh-accent-dark);
+  border: solid var(--uh-accent-dark);
+  border-radius: var(--uh-radius);
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: var(--uh-accent-dark);
+  border: solid white;
+}
+
+.input-alert {
   position: absolute;
-  right: -10rem;
+  left: calc(100% + 1px);
   top: 50%;
   transform: translateY(-50%);
   background-color: var(--uh-cardAlert);
@@ -87,7 +114,71 @@ body {
   border-radius: 10px;
   font-size: 14px;
   white-space: nowrap;
-  z-index: 10;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
+.card-body {
+  padding: 4rem;
+  background-color: var(--uh-subcard);
+  border-radius: var(--uh-round);
+}
+
+.form-control {
+  background-color: var(--uh-inputCard);
+  color: var(--uh-text);
+  border: none;
+}
+
+.form-control:focus {
+  background-color: #41fac5;
+
+  color: #000000;
+
+  border-color: var(--uh-card);
+
+  box-shadow: 0 0 0 0.2rem rgba(10, 124, 96, 0.35);
+
+  outline: none;
+}
+
+.card {
+
+  background-color: var(--uh-card);
+  border: solid 1rem var(--uh-border);
+  border-radius: var(--uh-round);
+  color: white;
+  box-shadow: var(--uh-shadow), var(--uh-hard-shadow);
+}
+
+.input-group-prepend {
+
+  border: none;
+
+  .input-group-text {
+    background-color: var(--uh-accent);
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+  }
+
+}
+
+.floating-error {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--uh-cardAlert);
+  color: var(--uh-danger);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 17px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.floating-error.show {
+  opacity: 1;
 }

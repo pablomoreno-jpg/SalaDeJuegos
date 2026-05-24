@@ -1,6 +1,115 @@
 <main>
-    <button class="btn-primary" routerLink="/registro">registrarse</button>
 
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+
+        <form (ngSubmit)="onSumit()" #loginForm="ngForm">
+            <div class="card p-4 login-card">
+
+                <div class="card-body">
+
+                    <h2 class="text-center mb-4">
+                        Iniciar Sesión
+                    </h2>
+
+                    <div class="text-center mb-4">
+                        <i class="bi bi-person-fill user-icon"></i>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i class="bi bi-envelope-fill"></i>
+                                    </span>
+                                </div>
+                                <input type="email" class="form-control" [(ngModel)]="email" name="email" required email
+                                    #emailField="ngModel" placeholder="Ingrese su email">
+                            </div>
+
+
+                            <div class="alert-space">
+                                @if(emailField.touched && emailField.errors?.['required']){
+                                <span class="input-alert">email es requerido</span>
+                                }
+
+                                @if(emailField.touched && emailField.errors?.['email']){
+                                <span class="input-alert">email invalido</span>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+
+                        <div class="input-wrapper">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </span>
+                                </div>
+
+
+                                <input type="password" class="form-control" [(ngModel)]="password" name="password"
+                                    required password placeholder="Ingrese su contraseña" #passField="ngModel">
+                            </div>
+
+
+
+                            <div class="alert-space">
+                                @if(passField.touched && passField.errors?.['required']){
+                                <span class="input-alert">contraseña invalida</span>
+                                }
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="floating-error" [class.show]="errorMensaje() != ''">
+                        <div class="mensaje-error">
+                            <div>{{errorMensaje()}}</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-2"
+                        [disabled]="loginForm.invalid || loading()">
+                        Iniciar sesión
+                    </button>
+
+                    <button routerLink="/registro" class="btn btn-outline-light w-100 mt-3">
+                        Registrarse
+                    </button>
+
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+    </div>
+
+    <div class="speeddial-button">
+
+        <div class="speed-dial-menu" [class.hidden]="!mostrarMenu">
+
+            <button class="menu-item" (click)="inicioRapido(2)">usuario 3</button>
+            <button class="menu-item" (click)="inicioRapido(1)">usuario 2</button>
+            <button class="menu-item" (click)="inicioRapido(0)">usuario 1</button>
+
+        </div>
+
+        <button class="main-button" (click)="mostrarMenu = !mostrarMenu">
+            +
+        </button>
+
+    </div>
+
+    <!--
     <div class="container">
         <h1>Inciar sesion</h1>
         <div class="form-card">
@@ -62,5 +171,5 @@
         </button>
 
     </div>
-
+-->
 </main>

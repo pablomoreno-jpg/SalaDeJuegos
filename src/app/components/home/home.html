@@ -1,6 +1,106 @@
-<main>
+<nav class="navbar navbar-expand-lg navbar-dark custom-nav">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <h5 class="pt-1">Sala de Juegos</h5>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" id="acercaDeMi">acerca de mi</a>
+                </li>
+            </ul>
+
+            <span style="color: white; font-weight: bold;">{{email}}</span>
 
 
+            <div class="d-flex align-items-center justify-content-start">
+                <div class="dropdown">
+
+                    <button class="btn text-white" (click)="mostrarMenu.set(!mostrarMenu())">
+
+                        <i class="bi bi-person-fill user-icon"></i>
+
+                    </button>
+
+                    @if(mostrarMenu()) {
+
+                    <ul class="dropdown-menu dropdown-menu-end show">
+
+                        <li>
+                            <button class="dropdown-item" (click)="cerrarSesion()">
+
+                                Cerrar sesión
+
+                            </button>
+                        </li>
+
+                    </ul>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="piano-nav d-flex">
+
+    <button (click)="mostrar.set(true)" class="piano-btn" routerLink="ahorcado" routerLinkActive="active">
+        ahorcado
+    </button>
+
+    <button (click)="mostrar.set(true)" class="piano-btn" routerLink="mayorMenor" routerLinkActive="active">
+        mayor o menor
+    </button>
+
+    <button (click)="mostrar.set(true)" class="piano-btn">
+        ?
+    </button>
+
+    <button (click)="mostrar.set(true)" class="piano-btn">
+        preguntados
+    </button>
+
+    <button (click)="mostrar.set(true)" class="piano-btn">
+        simple blackjac
+    </button>
+</div>
+
+<main class="contenido-principal">
+
+    @if(!mostrar()){
+    <div>
+        <h1 class="cartel">Bienvenido {{email}}</h1>
+    </div>
+    }
+    @else {
+
+    <div class="flex-grow-1">
+        <router-outlet></router-outlet>
+    </div>
+
+    }
+
+
+
+
+    <app-chat></app-chat>
+    <!--
     @if(auth.user()){
 
     <div class="usuario-contaier">
@@ -44,5 +144,41 @@
     </div>
 
     }
-
+-->
 </main>
+
+<footer class="bg-primary text-center text-white">
+    <app-quien-soy></app-quien-soy>
+    <!--
+    <div class="container p-4 pb-0">
+
+        <section class="mb-4">
+
+            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
+                role="button"><i class="fab fa-facebook-f text-white"></i></a>
+
+            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
+                role="button"><i class="fab fa-twitter text-white"></i></a>
+
+            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
+                role="button"><i class="fab fa-google text-white"></i></a>
+
+
+            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
+                role="button"><i class="fab fa-instagram text-white"></i></a>
+
+            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
+                role="button"><i class="fab fa-linkedin-in text-white"></i></a>
+
+            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
+                role="button"><i class="fab fa-github text-white"></i></a>
+        </section>
+
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    -->
+</footer>
