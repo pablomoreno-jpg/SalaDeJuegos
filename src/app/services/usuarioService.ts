@@ -2,7 +2,7 @@ import { computed, inject, Inject, Injectable } from "@angular/core";
 import { AuthServise } from "./auth";
 import { SupabaseService } from "./supabaseService";
 import { Persona } from "../models/persona";
-import { juegoIterface } from '../models/juegoModel';
+import { juegoInterfaceInsert, juegoInterfaceSelect } from '../models/juegoModel';
 
 
 @Injectable({
@@ -62,11 +62,14 @@ export class GameService {
     private auth = inject(AuthServise);
     private supabase = inject(SupabaseService);
 
-    async subirPuntuacionJuego(juego: juegoIterface): Promise<boolean> {
+    async subirPuntuacionJuego(juego: juegoInterfaceInsert): Promise<boolean> {
 
-        juego.id_usuario = this.auth.user()?.id
+        const juegoInsert = {
+            ...juego,
+            id_usuario: this.auth.user()?.id
+        }
 
-        const { data, error } = await this.supabase.getCliente().from('gamaeScores').insert(juego);
+        const { data, error } = await this.supabase.getCliente().from('gamaeScores').insert(juegoInsert);
 
         if (error) {
 
@@ -76,5 +79,16 @@ export class GameService {
 
         return true;
 
+    }
+
+    async traerPuntuacionesJuego(): Promise<juegoInterfaceSelect[]> {
+        const { data, error } = await this.supabase.getCliente().from('gamaeScores').select('*,usuarios(email)');
+
+        if (error) {
+            console.log(error.message, error.cause);
+            return [];
+        }
+
+        return data as juegoInterfaceSelect[];
     }
 }

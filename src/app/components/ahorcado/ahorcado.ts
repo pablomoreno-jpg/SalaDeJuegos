@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { juegoIterface } from '../../models/juegoModel';
+import { juegoInterfaceInsert } from '../../models/juegoModel';
 import { GameService } from '../../services/usuarioService';
 @Component({
   selector: 'app-ahorcado',
@@ -23,6 +23,7 @@ export class Ahorcado implements OnInit {
   inicio: Date | null = null;
   juegoTerminado: boolean = false;
   ganador: boolean = false;
+  tiempoTomado = false;
 
 
   ngOnInit(): void {
@@ -45,8 +46,8 @@ export class Ahorcado implements OnInit {
     this.puntuacion = 500;
 
     this.letrasUsuadas = [];
-
-    this.inicio = new Date();
+    this.tiempoTomado = false;
+    this.inicio = null;
 
   }
 
@@ -55,6 +56,13 @@ export class Ahorcado implements OnInit {
     if (this.letrasUsuadas.includes(letra) || this.juegoTerminado) {
       return;
     }
+
+    if (!this.tiempoTomado) {
+
+      this.inicio = new Date();
+      this.tiempoTomado = true;
+    }
+
 
     this.letrasElegidas++;
 
@@ -116,11 +124,11 @@ export class Ahorcado implements OnInit {
 
     const tiempo = this.tomarTiempo();
 
-    const juego: juegoIterface = {
+    const juego: juegoInterfaceInsert = {
       juego: 'Ahorcado',
       letras: this.letrasElegidas,
       tiempo: tiempo,
-      cartasAcertadas: 0,
+      aciertos: 0,
     }
 
     const succes = await this.gameService.subirPuntuacionJuego(juego);

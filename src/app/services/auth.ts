@@ -25,6 +25,8 @@ export class AuthServise {
                     id: session.user.id,
                     email: session.user.email ?? '',
                 })
+
+                this.router.navigate(['/'])
             }
             else{
                 this.user.set(null);

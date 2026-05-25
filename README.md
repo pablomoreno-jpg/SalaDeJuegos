@@ -50,3 +50,13 @@ Tambien se ha renovado el estilo de la pagina de forma casi completa, principalm
 cambiando la accesibilidad del componete Quien soy hacia el footer de la pagina principal
  
 En este sprint se a incorporado el fremework de Bootstrap con el fin de mejorar el apartado visual 
+
+# Sprint #4
+El Sprint #4 incorpora todas las funcionalidades desarrolladas en el Sprint #3.
+
+En esta versión se agregan 2 nuevos juegos:
+
+- **Preguntados**: un cuestionario de 5 preguntas de diferentes temáticas.
+- **Simple BlackJack**: una simplificación del clásico juego de cartas BlackJack, donde el objetivo es vencer al dealer.
+
+Además, ahora es posible visualizar las puntuaciones de todos los jugadores en cada juego.

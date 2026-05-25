@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { RouterLink, RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { RouterLink,Router, RouterOutlet, RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 import { AuthServise } from '../../services/auth';
 import { effect } from "@angular/core";
 import { UserServices } from '../../services/usuarioService';
@@ -9,7 +9,7 @@ import { QuienSoy } from "../quien-soy/quien-soy";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterOutlet, Chat, RouterLinkWithHref, QuienSoy],
+  imports: [CommonModule, RouterOutlet, Chat, RouterLinkWithHref, QuienSoy, RouterLinkActive],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -21,7 +21,7 @@ export class Home {
   mostrar = signal(false);
   mostrarMenu= signal(false);
 
-  constructor() {
+  constructor(public router: Router) {
 
     effect(() => {
 

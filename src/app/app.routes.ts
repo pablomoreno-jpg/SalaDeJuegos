@@ -6,7 +6,9 @@ import { Registro } from './components/registro/registro';
 import { Ahorcado } from './components/ahorcado/ahorcado';
 import { MayorMenor } from './components/mayor-menor/mayor-menor';
 import { authGuard, noAuthGuard } from './guard/auth';
-
+import { Preguntados } from './components/preguntados/preguntados';
+import { SimpleBlackJack } from './components/simple-black-jack/simple-black-jack';
+import { ListadoJuegos } from './components/listado-juegos/listado-juegos';
 
 export const routes: Routes = [
 
@@ -19,7 +21,10 @@ export const routes: Routes = [
         children: [
             { path: 'quienSoy', component: QuienSoy },
             { path: 'ahorcado', component: Ahorcado },
-            { path: 'mayorMenor', component: MayorMenor }
+            { path: 'mayorMenor', component: MayorMenor },
+            { path: 'preguntados', component: Preguntados },
+            { path: 'simplebj', component: SimpleBlackJack },
+            { path: 'listadojuegos', component: ListadoJuegos },
         ]
 
     },

@@ -1,0 +1,81 @@
+<div class="container mt-2">
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    @if(!juegoTerminado){
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <span class="badge bg-primary fs-6">
+                            Pregunta {{ index() + 1 }} / {{ preguntas().length }}
+                        </span>
+                    </div>
+
+                    <h3 class="mb-4 text-center" [innerHTML]="preguntaActual()?.question">
+                    </h3>
+
+                    <div class="row row-cols-2 g-3 mt-4">
+
+                        @for (respuesta of respuestas(); track $index) {
+
+                        <div class="col">
+                            <button class="btn w-100 py-4 fs-5" [class.btn-outline-light]="!contestado"
+                                [class.btn-success]="contestado &&respuesta === respuestaCorrecta()" [class.btn-danger]="contestado && respuesta === respuestaElegida &&
+                                    respuesta !== respuestaCorrecta()" [class.btn-secondary]="contestado && respuesta !== respuestaCorrecta() &&
+                                    respuesta !== respuestaElegida" (click)="respuestaElegida = respuesta; contestar()"
+                                [disabled]="contestado">
+
+                                <span [innerHTML]="respuesta"></span>
+
+                            </button>
+                        </div>
+                        }
+
+                    </div>
+                    <div class="mt-4">
+                        @if(correcto === true){
+                        <div class="d-flex justify-content-center">
+                            <div class="alert alert-success  text-center mt-">
+                                <span>respuesta Correcta</span>
+                            </div>
+                        </div>
+
+                        }
+                        @else if (correcto === false) {
+                        <div class="d-flex justify-content-center">
+                            <div class="alert alert-danger  text-center mt-">
+                                <span>repuesta incorrecta</span>
+                            </div>
+                        </div>
+
+                        }
+                    </div>
+
+                    <div class=" d-flex justify-content-center mt-2">
+                        <button class="btn-primary px-5" (click)="siguientePregunta()" [disabled]="!contestado">
+                            siguiente pregunta
+                        </button>
+                    </div>
+                    }
+                    @else{
+
+                    <h3 class="d-flex justify-content-center mt-2 mb-4">FIn Del Juego</h3>
+
+
+                    <div class="d-flex justify-content-center mt-2 mb-4">
+                        <span class="badge bg-primary fs-6"> resultado: {{ correctas}} / {{ preguntas().length }}
+                        </span>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-2">
+
+                        <button class="btn-outline-light w-50 py-4 fs-5 " (click)="iniciaQuiz()">volver a jugar</button>
+                    </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

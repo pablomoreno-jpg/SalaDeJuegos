@@ -1,0 +1,116 @@
+<div class="container-fluid mt-2">
+
+    <div class="card shadow-lg tabla-juegos">
+
+        <div class="row g-0">
+
+            <div class="col-md-3 columna-juego">
+
+                <div class="header-juego">
+                    Ahorcado
+                </div>
+
+                @for (item of listaAhorcado(); track $index) {
+
+                <div class="score-item">
+
+                    <div class="usuario">
+                        {{ item.jugador }}
+                    </div>
+
+                    <div class="dato">
+                        <i class="bi bi-stopwatch-fill"></i> {{ item.tiempo }}
+                    </div>
+
+                    <div class="dato">
+                        <strong>Letras elegidas</strong>:{{ item.letras }}
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+            <div class="col-md-3 columna-juego">
+
+                <div class="header-juego">
+                    Preguntados
+                </div>
+
+                @for (item of listaPreguntados(); track $index) {
+
+                <div class="score-item">
+
+                    <div class="usuario">
+                        {{ item.jugador }}
+                    </div>
+
+                    <div class="dato">
+                        <i class="bi bi-stopwatch-fill"></i> {{ item.tiempo }}
+                    </div>
+
+                    <div class="dato">
+                        <i class="bi bi-check-lg"></i> correctas: {{ item.aciertos }}
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+
+            <div class="col-md-3 columna-juego">
+
+                <div class="header-juego">
+                    Mayor Menor
+                </div>
+
+                @for (item of listaMayorMenor(); track $index) {
+
+                <div class="score-item">
+
+                    <div class="usuario">
+                        {{ item.jugador }}
+                    </div>
+
+                    <div class="dato">
+                        <i class="bi bi-check-lg"></i> acertadas: {{ item.aciertos }}
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+            <div class="col-md-3 columna-juego">
+
+                <div class="header-juego">
+                    Blackjack
+                </div>
+
+                @for (item of listaBlackJack(); track $index) {
+
+                <div class="score-item">
+
+                    <div class="usuario">
+                        {{ item.jugador }}
+                    </div>
+
+                    <div class="dato">
+                        <i class="bi bi-suit-diamond-fill"></i> ganadas: {{ item.aciertos }}
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

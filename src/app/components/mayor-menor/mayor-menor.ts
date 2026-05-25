@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { carta } from '../../models/cartaModel';
 import { CommonModule } from '@angular/common';
-import { juegoIterface } from '../../models/juegoModel';
+import { juegoInterfaceInsert } from '../../models/juegoModel';
 import { GameService } from '../../services/usuarioService';
 
 
@@ -20,7 +20,7 @@ export class MayorMenor implements OnInit {
   mostrarCarta = false;
   aciertos = 0;
   rondaActual = 0;
-  maxRondas = 3;
+  maxRondas = 5;
   juegoTerminado = false;
   resultado = '';
 
@@ -140,9 +140,9 @@ export class MayorMenor implements OnInit {
   }
 
   async guardarPuntuacion() {
-    const juego: juegoIterface = {
+    const juego: juegoInterfaceInsert = {
       juego: 'MayorMenor',
-      cartasAcertadas: this.aciertos,
+      aciertos: this.aciertos,
       letras: 0,
       tiempo: 0,
     }
