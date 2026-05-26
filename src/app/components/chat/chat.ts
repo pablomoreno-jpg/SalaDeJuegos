@@ -36,7 +36,9 @@ export class Chat {
 
     const texto = this.mensaje.trim();
 
-    this.chatSv.enviarMensaje(texto, this.emailUisiaro)
+    if(this.mensaje.length == 0) return;
+
+    await this.chatSv.enviarMensaje(texto, this.emailUisiaro)
 
     this.mensaje = '';
 

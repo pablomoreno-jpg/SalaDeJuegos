@@ -41,7 +41,9 @@
 
         <div class="chat-input d-flex gap-2">
 
-            <input type="text" class="form-control" [(ngModel)]="mensaje" placeholder="Escribí un mensaje...">
+            <input type="text" class="form-control" [(ngModel)]="mensaje" (keyup.enter)="enviar()" placeholder="Escribí un mensaje...">
+
+
 
             <button class="btn btn-primary" (click)="enviar()">
 

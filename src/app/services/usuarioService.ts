@@ -66,7 +66,7 @@ export class GameService {
 
         const juegoInsert = {
             ...juego,
-            id_usuario: this.auth.user()?.id
+            id_usuario: this.auth.user()?.id,
         }
 
         const { data, error } = await this.supabase.getCliente().from('gamaeScores').insert(juegoInsert);

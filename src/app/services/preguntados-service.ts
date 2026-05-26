@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { NotExpr } from '@angular/compiler';
 import { Injectable, inject, signal } from '@angular/core';
+import { Pregunta, PreguntadosModel } from '../models/preguntadosModel';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +9,12 @@ export class PreguntadosService {
 
   private http = inject(HttpClient);
   private URL_quiz = 'https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple';
-  private preguntasHttp = signal<any[]>([])
+  private preguntasHttp = signal<Pregunta[]>([])
 
   preguntas = this.preguntasHttp.asReadonly();
 
-  
-
   getQuiz() {
-    this.http.get<any>(this.URL_quiz).subscribe({
+    this.http.get<PreguntadosModel>(this.URL_quiz).subscribe({
       next:(data) => {
         this.preguntasHttp.set(data.results)
 

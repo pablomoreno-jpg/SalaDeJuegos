@@ -33,7 +33,7 @@ export class MayorMenor implements OnInit {
   iniciarJuego() {
     this.juegoTerminado = false;
     this.aciertos = 0;
-    this.rondaActual = 0;
+    this.rondaActual = 1;
     this.resultado = '';
     this.crearMazo();
     this.mezclarMazo();
@@ -124,16 +124,18 @@ export class MayorMenor implements OnInit {
       : 'Incorrecto';
 
 
-    if (this.rondaActual === this.maxRondas) {
+    this.rondaActual++
+
+
+    console.log(this.rondaActual)
+
+
+    if (this.rondaActual >= this.maxRondas) {
 
       this.juegoTerminado = true;
 
       this.guardarPuntuacion()
 
-
-    }
-    else {
-      this.rondaActual++;
     }
 
 
@@ -147,14 +149,14 @@ export class MayorMenor implements OnInit {
       tiempo: 0,
     }
 
-  const succes = await this.gameSv.subirPuntuacionJuego(juego);
+    const succes = await this.gameSv.subirPuntuacionJuego(juego);
 
-  if(succes) {
-    console.log('la puntuacion se guardo exitosamente');
-  }
-    else{
-  console.log('Error al guarda la puntuacion');
-}
+    if (succes) {
+      console.log('la puntuacion se guardo exitosamente');
+    }
+    else {
+      console.log('Error al guarda la puntuacion');
+    }
   }
 
 }
