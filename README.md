@@ -68,3 +68,6 @@ En esta versión se implementa 2 nuevos compoentens:
 
 - **Encuesta**: es una encuesta de experiencia de usuario.
 - **Resuktados**: es la lista de todas las encuestas completadas por cada usuario(solamente acceible por un usario con rol de admin).
+
+y tambien la incorporacion de animaciones de transicion entre componentes 
+
