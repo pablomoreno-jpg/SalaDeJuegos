@@ -61,7 +61,7 @@ En esta versión se agregan 2 nuevos juegos:
 
 Además, ahora es posible visualizar las puntuaciones de todos los jugadores en cada juego.
 
-# Sprint #4
+# Sprint #5
 El Sprint #4 incorpora todas las funcionalidades desarrolladas en el Sprint #4.
 
 En esta versión se implementa 2 nuevos compoentens:
