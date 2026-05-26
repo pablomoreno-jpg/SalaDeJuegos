@@ -60,3 +60,11 @@ En esta versión se agregan 2 nuevos juegos:
 - **Simple BlackJack**: una simplificación del clásico juego de cartas BlackJack, donde el objetivo es vencer al dealer.
 
 Además, ahora es posible visualizar las puntuaciones de todos los jugadores en cada juego.
+
+# Sprint #4
+El Sprint #4 incorpora todas las funcionalidades desarrolladas en el Sprint #4.
+
+En esta versión se implementa 2 nuevos compoentens:
+
+- **Encuesta**: es una encuesta de experiencia de usuario.
+- **Resuktados**: es la lista de todas las encuestas completadas por cada usuario(solamente acceible por un usario con rol de admin).
