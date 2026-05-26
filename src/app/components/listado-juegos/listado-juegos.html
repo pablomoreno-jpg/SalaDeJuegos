@@ -26,6 +26,11 @@
                         <strong>Letras elegidas</strong>:{{ item.letras }}
                     </div>
 
+
+                    <div class="dato">
+                        {{ item.fecha | date:'dd/MM/yyyy HH:mm':'America/Argentina/Buenos_Aires' }}
+                    </div>
+
                 </div>
 
                 }
@@ -54,6 +59,10 @@
                         <i class="bi bi-check-lg"></i> correctas: {{ item.aciertos }}
                     </div>
 
+                    <div class="dato">
+                        {{ item.fecha | date:'dd/MM/yyyy HH:mm':'America/Argentina/Buenos_Aires' }}
+                    </div>
+
                 </div>
 
                 }
@@ -79,6 +88,10 @@
                         <i class="bi bi-check-lg"></i> acertadas: {{ item.aciertos }}
                     </div>
 
+                    <div class="dato">
+                        {{ item.fecha | date:'dd/MM/yyyy HH:mm':'America/Argentina/Buenos_Aires' }}
+                    </div>
+
                 </div>
 
                 }
@@ -102,6 +115,11 @@
                     <div class="dato">
                         <i class="bi bi-suit-diamond-fill"></i> ganadas: {{ item.aciertos }}
                     </div>
+
+                    <div class="dato">
+                        {{ item.fecha | date:'dd/MM/yyyy HH:mm':'America/Argentina/Buenos_Aires' }}
+                    </div>
+
 
                 </div>
 

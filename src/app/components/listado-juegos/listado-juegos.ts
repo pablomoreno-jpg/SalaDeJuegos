@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { GameService } from '../../services/usuarioService';
 import { juegoInterfaceSelect } from '../../models/juegoModel';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-listado-juegos',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './listado-juegos.html',
   styleUrl: './listado-juegos.css',
 })
@@ -15,25 +16,28 @@ export class ListadoJuegos implements OnInit {
   listaAhorcado = computed(() =>
     this.listadoPuntuaciones()
       .filter(p => p.juego === 'Ahorcado').sort((a, b) => {
-        if ((b.letras ?? 0) !== (a.letras ?? 0)) {
-          return (b.letras ?? 0) - (a.letras ?? 0);
+        if ((a.letras ?? 0) !== (b.letras ?? 0)) {
+          return (a.letras ?? 0) - (b.letras ?? 0);
         }
 
-        return (a.tiempo ?? 0) - (b.tiempo ?? 0);
+        return (b.tiempo ?? 0) - (a.tiempo ?? 0);
       })
       .map(p => ({
         jugador: p.usuarios?.email,
         tiempo: p.tiempo,
         letras: p.letras,
+        fecha: p.created_at
       }))
   );
 
   listaMayorMenor = computed(() =>
     this.listadoPuntuaciones()
       .filter(p => p.juego === 'MayorMenor').sort((a, b) => (b.aciertos ?? 0) - (a.aciertos ?? 0))
+      .slice(0, 5)
       .map(p => ({
         jugador: p.usuarios?.email,
         aciertos: p.aciertos,
+        fecha: p.created_at
       }))
   );
 
@@ -46,20 +50,23 @@ export class ListadoJuegos implements OnInit {
 
         return (a.tiempo ?? 0) - (b.tiempo ?? 0);
       })
-
+      .slice(0, 5)
       .map(p => ({
         jugador: p.usuarios?.email,
         tiempo: p.tiempo,
         aciertos: p.aciertos,
+        fecha: p.created_at
       }))
   );
 
   listaBlackJack = computed(() =>
     this.listadoPuntuaciones()
       .filter(p => p.juego === 'simple blackjack').sort((a, b) => (b.aciertos ?? 0) - (a.aciertos ?? 0))
+      .slice(0, 5)
       .map(p => ({
         jugador: p.usuarios?.email,
         aciertos: p.aciertos,
+        fecha: p.created_at
       }))
   );
 

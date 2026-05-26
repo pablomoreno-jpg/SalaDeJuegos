@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { juegoInterfaceInsert } from '../../models/juegoModel';
 import { GameService } from '../../services/usuarioService';
+import { ahorcadoInteface } from '../../models/ahorcadoNodel';
+
+
 @Component({
   selector: 'app-ahorcado',
   imports: [CommonModule],
@@ -11,8 +14,7 @@ import { GameService } from '../../services/usuarioService';
 export class Ahorcado implements OnInit {
 
   private gameService = inject(GameService);
-  palabras: Array<string> = ["PERRO", "GATO", "FUEGO", "RELOJ", "ESCUDO", "CINTURA", "PIEDRA"];
-  palabraElegida: string = "";
+  palabraElegida?: ahorcadoInteface;
   letrasDePalabraElegida: string[] = [];
   letrasUsuadas: string[] = [];
   abecedario: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -25,6 +27,15 @@ export class Ahorcado implements OnInit {
   ganador: boolean = false;
   tiempoTomado = false;
 
+  palabras: ahorcadoInteface[] = [
+    {tipo:"Animal", palabra:"PERRO"},
+    {tipo:"Animal", palabra: "GATO"}, 
+    {tipo:"Alemento natural", palabra: "FUEGO"}, 
+    {tipo:"Teconologia", palabra: "RELOJ"}, 
+    {tipo:"Arma", palabra:"ESCUDO"}, 
+    {tipo:"Parte del Cuerpo", palabra:"CINTURA"}, 
+    {tipo:"naturaleza", palabra:"PIEDRA"}
+  ];
 
   ngOnInit(): void {
 
@@ -35,7 +46,7 @@ export class Ahorcado implements OnInit {
   iniciarJuego() {
 
     this.palabraElegida = this.palabras[Math.floor(Math.random() * this.palabras.length)];
-    this.letrasDePalabraElegida = Array(this.palabraElegida.length).fill('_');
+    this.letrasDePalabraElegida = Array(this.palabraElegida.palabra.length).fill('_');
 
     this.letrasUsuadas = [];
 
@@ -68,11 +79,11 @@ export class Ahorcado implements OnInit {
 
     this.letrasUsuadas.push(letra);
 
-    if (this.palabraElegida.includes(letra)) {
+    if (this.palabraElegida?.palabra.includes(letra)) {
 
-      for (let i = 0; i < this.palabraElegida.length; i++) {
+      for (let i = 0; i < this.palabraElegida.palabra.length; i++) {
 
-        if (this.palabraElegida[i] === letra) {
+        if (this.palabraElegida.palabra[i] === letra) {
 
           this.letrasDePalabraElegida[i] = letra;
         }
@@ -108,6 +119,8 @@ export class Ahorcado implements OnInit {
     if (this.errores === this.maxErrors) {
 
       this.juegoTerminado = true;
+
+      this.guardarPuntuacion();
 
     }
 
