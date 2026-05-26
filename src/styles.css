@@ -107,13 +107,14 @@ footer {
   position: absolute;
   left: calc(100% + 1px);
   top: 50%;
+  max-width: 180px;
   transform: translateY(-50%);
   background-color: var(--uh-cardAlert);
   color: var(--uh-danger);
   padding: 8px 12px;
   border-radius: 10px;
   font-size: 14px;
-  white-space: nowrap;
+  white-space: normal;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 

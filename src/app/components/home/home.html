@@ -89,6 +89,20 @@
     </div>
     }
 
+    <div class="floating-buttons">
+
+        <button class="btn-primary" routerLink="encuesta" routerLinkActive="active" title="responder Encuesta"><i
+                class="bi bi-pencil-square"></i></button>
+
+        @if(isAdmin()){
+
+        <button class="btn-primary" routerLink="/resultados" title="Ver encuetas"><i class="bi bi-card-list"></i></button>
+
+        }
+
+    </div>
+
+
     <div class="flex-grow-1">
         <router-outlet></router-outlet>
     </div>
