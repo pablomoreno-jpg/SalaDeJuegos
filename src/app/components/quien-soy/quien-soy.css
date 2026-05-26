@@ -4,12 +4,14 @@
   border: 2px solid #f27405;
   padding: 1.2rem;
 
+
 }
 
 footer {
-    margin-top: 3rem;
+  margin-top: 3rem;
   background-color: var(--uh-accent-dark);
 }
+
 .footer-cv .card-body {
 
   background-color: var(--uh-subaccent);
@@ -21,8 +23,8 @@ footer {
 /* FOTO */
 .avatar-img {
 
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
 
   object-fit: cover;
 
@@ -67,6 +69,33 @@ footer {
   margin-bottom: 0;
 }
 
-.list-unstyled{
+.list-unstyled {
   color: #5c1400;
+}
+
+.footer-cv {
+
+  margin-top: auto;
+
+  position: relative;
+
+  width: 100%;
+
+  z-index: 1;
+
+  background-color: var(--uh-accent-dark);
+
+  padding-inline: 1rem;
+  padding-bottom: 1rem;
+
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.35);
+
+}
+
+
+
+
+footer {
+  margin-top: 3rem;
+  background-color: var(--uh-accent-dark);
 }

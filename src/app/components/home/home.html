@@ -84,7 +84,7 @@
 <main class="contenido-principal">
 
     @if(router.url === '/home'){
-    <div>
+    <div >
         <h1 class="cartel">Bienvenido {{email}}</h1>
     </div>
     }
@@ -96,53 +96,25 @@
 
         @if(isAdmin()){
 
-        <button class="btn-primary" routerLink="/resultados" title="Ver encuetas"><i class="bi bi-card-list"></i></button>
+        <button class="btn-primary" routerLink="/resultados" title="Ver encuetas"><i
+                class="bi bi-card-list"></i></button>
 
         }
 
     </div>
 
 
-    <div class="flex-grow-1">
+    <div class="flex-grow-1 router-container" [@routeAnimations]="router.url">
         <router-outlet></router-outlet>
     </div>
 
     <app-chat></app-chat>
 
+
+
 </main>
 
-<footer class="bg-primary text-center text-white">
+<footer class="footer-fijo">
     <app-quien-soy></app-quien-soy>
-    <!--
-    <div class="container p-4 pb-0">
-
-        <section class="mb-4">
-
-            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
-                role="button"><i class="fab fa-facebook-f text-white"></i></a>
-
-            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
-                role="button"><i class="fab fa-twitter text-white"></i></a>
-
-            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
-                role="button"><i class="fab fa-google text-white"></i></a>
-
-
-            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
-                role="button"><i class="fab fa-instagram text-white"></i></a>
-
-            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
-                role="button"><i class="fab fa-linkedin-in text-white"></i></a>
-
-            <a data-mdb-ripple-init class="btn btn-outline-primary btn-floating m-1 border border-white" href="#!"
-                role="button"><i class="fab fa-github text-white"></i></a>
-        </section>
-
-    </div>
-
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    -->
 </footer>
+

@@ -34,8 +34,7 @@
 }
 
 .cartel {
-    margin-top: 6rem;
-    margin-bottom: 10rem;
+
     display: flex;
     justify-content: center;
     color: white;
@@ -191,4 +190,26 @@
 
 .floating-btn:hover {
     transform: translateY(-4px) scale(1.05);
+}
+
+.router-container {
+
+    position: relative;
+    min-height: 575px;
+    margin-bottom: 3rem;
+}
+
+.footer-fijo {
+    position: relative;
+    z-index: 1;
+}
+
+:host {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-principal {
+    flex: 1;
 }
