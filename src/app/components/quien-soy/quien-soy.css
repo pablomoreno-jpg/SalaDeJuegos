@@ -1,55 +1,72 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7.5rem;
+.footer-cv .card {
+  background-color: #da6805;
+  border-radius: 20px;
+  border: 2px solid #f27405;
+  padding: 1.2rem;
+
 }
 
-.card {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background-color: var(--uh-card);
-  border: solid var(--uh-border);
-  border-radius: var(--uh-radius);
-  box-shadow: var(--uh-shadow), var(--uh-hard-shadow);
+footer {
+    margin-top: 3rem;
+  background-color: var(--uh-accent-dark);
+}
+.footer-cv .card-body {
 
-  .img {
-    float: left;
-    width: 12rem;
-    height: 12rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+  background-color: var(--uh-subaccent);
+  border-radius: 18px;
+  padding: 1.5rem !important;
 
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    background-color: var(--uh-subcard);
-    padding: 1rem;
-    border-radius: var(--uh-radius);
-  }
-
-  .info h1 {
-    margin: 0;
-    line-height: 1.1;
-  }
-  .info small {
-    font-size: 1rem;
-    color: var(--uh-text-muted);
-    font-style: italic;
-  }
-
-  .info span {
-    margin-top: 0.5rem;
-    font-weight: 600;
-  }
-
-  .info p {
-    margin: 0.2rem 0;
-  }
 }
 
+/* FOTO */
+.avatar-img {
+
+  width: 140px;
+  height: 140px;
+
+  object-fit: cover;
+
+  border: 3px solid #4e0f01 !important;
+}
+
+.footer-cv h2 {
+  font-size: 2.3rem;
+  color: #5c1400;
+  margin-bottom: 0.2rem !important;
+  line-height: 1.1;
+}
+
+
+.footer-cv .text-muted {
+
+  color: rgba(70, 35, 10, 0.7) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+
+.info-line {
+
+  margin-bottom: 0.9rem;
+  color: #4b1c00;
+  line-height: 1.5;
+}
+
+.section-title {
+
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #5c1400;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(92, 20, 0, 0.15);
+}
+
+.footer-cv p {
+  color: #5c1400;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.list-unstyled{
+  color: #5c1400;
+}

@@ -1,1 +1,96 @@
-<p style="color: white;">mayor-menor works!</p>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card shadow-lg p-2">
+
+            <h2>Mayor o Menor</h2>
+
+            <h4>Aciertos: {{aciertos}}</h4>
+
+            <h5>ronda: {{rondaActual}} / {{maxRondas}}</h5>
+
+            <div class="row mt-2">
+
+                <div class="col text-center">
+
+                    <h5>Tu carta</h5>
+
+                    <img [src]="cartaJugador?.imagen" class="img-fluid carta">
+
+
+                </div>
+
+                <div class="col text-center">
+
+                    <h5>Carta IA</h5>
+
+                    <img [src]="mostrarCarta
+                        ? cartaIa?.imagen
+                        : 'assets/cartas/dorso.png'" class="img-fluid carta">
+
+
+                </div>
+
+            </div>
+            <h4 class="mt-4 text-center">
+                {{resultado}}
+            </h4>
+
+            @if(!mostrarCarta && !juegoTerminado){
+            <div class="mt-2 d-flex gap-3 justify-content-center">
+
+                <button class="btn btn-success" (click)="elegir('mayor')">
+
+                    Mayor
+
+                </button>
+
+                <button class="btn btn-danger" (click)="elegir('menor')">
+
+                    Menor
+
+                </button>
+
+            </div>
+
+
+            }
+
+
+            @if(mostrarCarta && !juegoTerminado){
+
+            <div class="text-center mt-3">
+
+                <button class="btn btn-warning" (click)="nuevaRonda()">
+
+                    Siguiente ronda
+
+                </button>
+
+            </div>
+
+            }
+
+
+
+            @if(juegoTerminado){
+
+            <div class="mt-4 text-center">
+
+                <h3>
+                    Juego terminado
+                </h3>
+
+
+                <button class="btn btn-primary" (click)="iniciarJuego()">
+
+                    Jugar otra vez
+
+                </button>
+
+            </div>
+
+            }
+
+        </div>
+    </div>
+</div>

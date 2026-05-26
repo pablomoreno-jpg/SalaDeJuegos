@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthServise } from '../../services/auth';
@@ -31,7 +31,7 @@ export class Login {
 
     const success = await this.auth.logIn(this.email, this.password);
 
-    if (!success) this.errorMensaje.set('El usuario No existe');
+    if (!success) this.errorMensaje.set('credencialas incorrectas');
 
     this.loading.set(false);
   }

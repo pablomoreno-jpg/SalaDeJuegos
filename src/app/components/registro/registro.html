@@ -1,126 +1,155 @@
 <main>
+
     <div class="salir">
-        <button class="btn-primary" (click)="volver()">volver</button>
+        <button class="btn-primary" (click)="volver()">
+            <i class="bi bi-arrow-left back"></i></
+            button>
     </div>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+
+        <div class="card  p-4 register-card">
+            <form (ngSubmit)="onSumit()" #registerForm="ngForm">
+                <div class="card-body">
+                    <h2 class="text-center">
+                        Ingrese sus Datos
+                    </h2>
+
+                    <div class="text-center mb-2">
+                        <i class="bi bi-person-fill user-icon"></i>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+
+                            <input type="text" class="form-control" placeholder="nombre" [(ngModel)]="nombre"
+                                name="nombre" required nombre #nombreField="ngModel">
+
+                            @if(nombreField.touched && nombreField.errors?.['required']){
+
+                            <span class="input-alert"> nombre requerido</span>
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+
+                            <input type="text" class="form-control" placeholder="apellido" [(ngModel)]="apellido"
+                                name="apellido" required apellido #apellidoField="ngModel">
+
+                            @if(apellidoField.touched && apellidoField.errors?.['required']){
+
+                            <span class="input-alert"> apellido requerido</span>
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+
+                            <input type="number" class="form-control" placeholder="edad" min="1" [(ngModel)]="edad"
+                                name="edad" required edad #edadField="ngModel">
+
+                            @if(edadField.errors?.['required'] && edadField.touched){
+
+                            <span class="input-alert"> edad requerida</span>
+                            }
+
+                            @if(edadField.touched && edadField.errors?.['min']){
+
+                            <span class="input-alert"> edad invalida</span>
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i class="bi bi-envelope-fill"></i>
+                                    </span>
+
+                                </div>
+
+                                <input type="email" class="form-control" placeholder="email" [(ngModel)]="email"
+                                    name="email" required email #emialField="ngModel">
+                            </div>
+
+                            @if(emialField.touched && emialField.errors?.['required']){
+                            <span class="input-alert">
+                                email requerido
+                            </span>
+                            }
+
+                            @if(emialField.touched && emialField.errors?.['email']){
+                            <span class="input-alert">
+                                formato invalido
+                            </span>
+                            }
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control" [(ngModel)]="password" name="password"
+                                    required password #passwordField="ngModel" placeholder="Ingrese su contraseña">
+                            </div>
 
 
+                            <div class="alert-space">
+                                @if(passwordField.touched && passwordField.errors?.['required']){
+                                <span class="input-alert">contraseña es requerida</span>
+                                }
 
+                            </div>
 
-    <div class="container">
+                        </div>
+                    </div>
 
+                    <div class="mb-3">
+                        <div class="input-wrapper">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control" [(ngModel)]="passwordConfirm"
+                                    name="passconfirm" required password #passConField="ngModel" [pattern]="password"
+                                    placeholder="confirmar contraseña">
+                            </div>
 
-        <h1>Ingrese sus Datos</h1>
+                            <div class="alert-space">
+                                @if(passConField.errors?.['pattern'] && passConField.touched){
+                                <span class="input-alert">las contraseñas no coinciden</span>
+                                }
 
+                            </div>
 
-        <form class="form-register" (ngSubmit)="onSumit()" #registerForm="ngForm">
+                        </div>
+                    </div>
 
-            <div class="form-data">
-
-                <div class="data-input">
-                    <input type="text" placeholder="nombre" [(ngModel)]="nombre" name="nombre" required nombre
-                        #nombreField="ngModel">
-
-                    @if(nombreField.touched && nombreField.errors?.['required']){
-
-                    <span class="alert"> nombre requerido</span>
-                    }
+                    <button type="submit" class="btn btn-primary w-100 mt-2"
+                        [disabled]="registerForm.invalid || loading()">
+                        Registrarse
+                    </button>
 
                 </div>
-
-                <div class="data-input">
-                    <input type="text" placeholder="apellido" [(ngModel)]="apellido" name="apellido" required apellido
-                        #apellidoField="ngModel">
-
-                    @if(apellidoField.touched && apellidoField.errors?.['required']){
-                    <span class="alert">
-                        apellido requerido
-                    </span>
-                    }
-
-                </div>
-
-                <div class="data-input">
-                    <input type="number" placeholder="edad" min="1" [(ngModel)]="edad" name="edad" required edad
-                        #edadField="ngModel">
-
-                    @if(edadField.errors?.['required'] && edadField.touched){
-
-                    <span class="alert">
-                        edad requerida
-                    </span>
-                    }
-
-                    @if(edadField.touched && edadField.errors?.['min'] ){
-
-                    <span class="alert">
-                        edad invalida
-                    </span>
-
-                    }
-
-                </div>
-
-                <div class="data-input">
-                    <input type="email" placeholder="email" [(ngModel)]="email" name="email" required email
-                        #emialField="ngModel">
-
-                    @if(emialField.touched && emialField.errors?.['required']){
-                    <span class="alert">
-                        email requerido
-                    </span>
-                    }
-
-                    @if(emialField.touched && emialField.errors?.['email']){
-                    <span class="alert">
-                        formato invalido
-                    </span>
-                    }
+            </form>
 
 
-                </div>
-
-
-                <div class="data-input">
-                    <input type="password" placeholder="contraseña" minlength="6" [(ngModel)]="password"
-                        name="contraseña" required contraseña #passField="ngModel">
-
-
-                    @if(passField.touched && passField.errors?.['required']){
-
-                    <span class="alert">
-                        contraseña invalida
-                    </span>
-                    }
-
-                </div>
-
-                <div class="data-input">
-                    <input type="password" placeholder="confirmar contraseña" [(ngModel)]="passwordConfirm"
-                        name="passconfirm" required [pattern]="password" passconfirm #passConField="ngModel">
-
-
-                    @if(passConField.errors?.['pattern'] && passConField.touched){
-
-                    <span class="alert">
-                        las contraseñas no coinciden
-                    </span>
-                    }
-
-                </div>
-
-            </div>
-
-            <button type="submit" [disabled]="registerForm.invalid|| loading()">
-                registrarse
-            </button>
-
-        </form>
-
-    </div>
-
-    <div class="error-contaier" [style.visibility]="errorMensaje() != ''  ? 'visible' : 'hidden' ">
-        <div class="mensaje-error">
-            <div>{{errorMensaje()}}</div>
         </div>
     </div>
 

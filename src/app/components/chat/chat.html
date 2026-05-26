@@ -1,0 +1,58 @@
+<div class="position-fixed bottom-0 end-0 chatGlobal">
+
+    <div class="chat-header p-3 d-flex justify-content-between align-items-center" role="button"
+        (click)="mostrarChat.update(v => !v)">
+
+        <i class="bi bi-chat-left-fill"></i>
+        <span>Chat</span>
+
+        <i class="bi" [ngClass]="mostrarChat()
+            ? 'bi-chevron-down'
+            : 'bi-chevron-up'">
+        </i>
+    </div>
+
+    @if(mostrarChat()) {
+
+    <div class="chat-abierto">
+
+        <div class="chat-mensajes">
+
+            @for (chat of chatSv.mensaje(); track $index) {
+
+            <div class="burbuja" [ngClass]="chat.email === emailUisiaro ? 'mio' : 'otro'">
+                <small class="nombre-user">
+                    {{chat.email}}
+                </small>
+
+                <div>
+                    {{chat.contenido}}
+                </div>
+
+                <small class="fecha">
+                    {{chat.created_at | date:'dd/MM/yyyy HH:mm'}}
+                </small>
+
+            </div>
+
+            }
+
+        </div>
+
+        <div class="chat-input d-flex gap-2">
+
+            <input type="text" class="form-control" [(ngModel)]="mensaje" placeholder="Escribí un mensaje...">
+
+            <button class="btn btn-primary" (click)="enviar()">
+
+                <i class="bi bi-send-fill"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    }
+
+</div>

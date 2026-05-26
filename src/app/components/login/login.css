@@ -1,154 +1,37 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 7.5rem;
-
-    h1 {
-        color: white;
-    }
-}
-
-.error-contaier {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-
-}
-
-.mensaje-error {
-    background-color: var(--uh-cardAlert);
-    width: 10rem;
-    height: 3rem;
-    align-content: center;
-    text-align: center;
-    border-radius: var(--uh-round);
-    box-shadow: var(--uh-shadow);
-    color: var(--uh-danger);
-    font-size: 1rem;
-    font-weight: var(--uh-fontweight);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.text-alert {
-    display: block;
-    min-height: 20px;
-    margin-top: 0.5rem;
-    justify-content: center;
-    text-align: center;
-    color: var(--uh-danger);
-    font-weight: var(--uh-fontweight);
-}
-
-.form-card {
-    width: 25rem;
-    height: 10rem;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background-color: var(--uh-card);
-    border: solid var(--uh-border);
-    border-radius: var(--uh-radius);
-    box-shadow: var(--uh-shadow), var(--uh-hard-shadow);
-
-    h1 {
-        text-align: center;
-    }
-
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    form button {
-        margin: auto;
-        background-color: var(--uh-accent);
-        border: none;
-        border-radius: var(--uh-round);
-        width: 6.5rem;
-        height: 3.5rem;
-        font-size: 1.2rem;
-        cursor: pointer;
-        margin-top: 0.2rem;
-
-        transition:
-            transform 0.2s ease,
-            background-color 0.2s ease;
-    }
-
-    form button:hover,
-    form button:focus {
-        background-color: var(--uh-accent-luz);
-        transform: scale(1.05);
-    }
-
-
-}
-
-.data-input {
-
-    display: flex;
+.input-wrapper {
     position: relative;
+    width: 100%;
+}
 
-    input {
-        padding: 0.75rem;
-        border-radius: var(--uh-radius);
-        border: none;
-        width: 20rem;
-        background-color: var(--uh-subcard);
-        color: var(--uh-text);
-        padding-left: 1rem;
-    }
+h2 {
+    font-weight: var(--uh-fontweight);
+}
 
-
-    .text-alert {
-        display: block;
-        min-height: 20px;
-        margin-top: 0.5rem;
-        justify-content: center;
-        text-align: center;
-        color: var(--uh-danger);
-        font-weight: var(--uh-fontweight);
-    }
-
+.user-icon {
+    font-size: 5rem;
+    color: white;
 }
 
 .speeddial-button {
     position: fixed;
     right: 30px;
     bottom: 24px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     z-index: 50;
 }
 
 .speed-dial-menu {
     position: absolute;
     bottom: 80px;
-
     display: flex;
     flex-direction: column;
     gap: 10px;
-
     padding: 16px;
-
     background: var(--uh-card);
     border-radius: 16px;
-
     border: 1px solid var(--uh-principal-luz);
-
     box-shadow: 0px 15px 60px -4px rgba(16, 24, 40, 0.10);
 }
 
