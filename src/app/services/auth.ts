@@ -28,7 +28,7 @@ export class AuthServise {
 
                 this.router.navigate(['/'])
             }
-            else{
+            else {
                 this.user.set(null);
             }
 
@@ -119,6 +119,21 @@ export class AuthServise {
         if (error) console.log(error.message);
 
         return data;
+
+    }
+
+    async esAdmin(id: string): Promise<boolean> {
+
+        const { data, error } = await this.supabase.getCliente().from('usuarios').select('rol').eq('id', id).single();
+
+        if (error) {
+
+            console.log(error.cause)
+
+            return false;
+        }
+
+        else return data.rol === 'admin'
 
     }
 

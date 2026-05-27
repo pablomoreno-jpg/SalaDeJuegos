@@ -1,0 +1,273 @@
+    <div class="container py-2">
+
+        <div class="card shadow-lg border-0 encuesta-card">
+
+            <form (ngSubmit)="enviarRespuesta()" #registerForm="ngForm">
+
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4">
+                        Encuesta
+                    </h2>
+
+                    <div class="row">
+
+                        <div class="col-md-6 border-end pe-md-5">
+
+                            <h4 class="mb-4">
+                                Datos personales
+                            </h4>
+
+                            <div class="text-center mb-4">
+                                <i class="bi bi-person-circle user-icon "></i>
+                            </div>
+
+                            <div class="mb-3">
+
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="nombre"
+                                        name="nombre" required #nombreField="ngModel">
+
+
+                                    @if(nombreField.touched &&
+                                    nombreField.errors?.['required']) {
+
+                                    <span class="input-alert">
+                                        Nombre requerido
+                                    </span>
+                                    }
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <div class="input-wrapper">
+
+                                    <input type="text" class="form-control" placeholder="Apellido"
+                                        [(ngModel)]="apellido" name="apellido" required #apellidoField="ngModel">
+
+                                    @if(apellidoField.touched &&
+                                    apellidoField.errors?.['required']) {
+
+                                    <span class="input-alert">
+                                        Apellido requerido
+                                    </span>
+
+                                    }
+                                </div>
+
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <div class="input-wrapper">
+                                    <input type="number" class="form-control" placeholder="Edad" min="18"
+                                        [(ngModel)]="edad" name="edad" required #edadField="ngModel">
+
+                                    @if(edadField.errors?.['required']
+                                    && edadField.touched){
+
+                                    <span class="input-alert">
+                                        Edad requerida
+                                    </span>
+
+                                    }
+
+                                    @if(edadField.errors?.['min']
+                                    && edadField.touched){
+
+                                    <span class="input-alert">
+                                        edad invalida
+                                    </span>
+
+                                    }
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="input-wrapper">
+
+
+                                    <input type="text" class="form-control" placeholder="Teléfono" pattern="^[0-9]{10}$"
+                                        [(ngModel)]="telefono" name="telefono" required #telefonoField="ngModel">
+
+                                    @if(telefonoField.errors?.['required']
+                                    && telefonoField.touched){
+
+                                    <span class="input-alert">
+                                        Teléfono requerido
+                                    </span>
+
+                                    }
+
+                                    @if(telefonoField.errors?.['pattern']
+                                    && telefonoField.touched){
+
+                                    <span class="input-alert">
+                                        Teléfono inválido
+                                    </span>
+
+                                    }
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 ps-md-5">
+
+                            <h4 class="mb-4">
+                                Encuesta
+                            </h4>
+
+                            <div class="mb-4">
+
+                                <h5 class="mb-3">
+                                    Nivel de satisfacción
+                                </h5>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" required type="radio" name="satisfaccion"
+                                        value="muy malo" #satisfaccionField="ngModel" [(ngModel)]="satisfaccion">
+
+                                    <label class="form-check-label">
+                                        Muy malo
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" required type="radio" name="satisfaccion"
+                                        value="malo" #satisfaccionField="ngModel" [(ngModel)]="satisfaccion">
+
+                                    <label class="form-check-label">
+                                        Malo
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" required type="radio" name="satisfaccion"
+                                        value="neutral" #satisfaccionField="ngModel" [(ngModel)]="satisfaccion">
+
+                                    <label class="form-check-label">
+                                        Neutral
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" required type="radio" name="satisfaccion"
+                                        #satisfaccionField="ngModel" value="bueno" [(ngModel)]="satisfaccion">
+
+                                    <label class="form-check-label">
+                                        Bueno
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="satisfaccion" value="muy bueno"
+                                        #satisfaccionField="ngModel" [(ngModel)]="satisfaccion">
+
+                                    <label class="form-check-label">
+                                        Muy bueno
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <h5 class="mb-3">
+                                    Juegos favoritos
+                                </h5>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" value="Ahorcado" (change)="toggleJuego($event)"
+                                        type="checkbox">
+
+                                    <label class="form-check-label">
+                                        Ahorcado
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" value="Preguntados" (change)="toggleJuego($event)"
+                                        type="checkbox">
+
+                                    <label class="form-check-label">
+                                        Preguntados
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" value="MayorMenor" (change)="toggleJuego($event)"
+                                        type="checkbox">
+
+                                    <label class="form-check-label">
+                                        Mayor o Menor
+                                    </label>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input class="form-check-input" value="simpleBj" (change)="toggleJuego($event)"
+                                        type="checkbox">
+
+                                    <label class="form-check-label">
+                                        Simple BlackJack
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Comentarios
+                                </label>
+                                <div class="input-wrapper">
+                                    <div class="mb-4">
+                                        <textarea class="form-control" rows="5" required
+                                            placeholder="ingrese su opionion..." [(ngModel)]="opiniones"
+                                            name="comentario" required #comentarioField="ngModel">></textarea>
+                                    </div>
+
+                                    @if(comentarioField.invalid &&
+                                    comentarioField.touched){
+
+                                    <span class="input-alert">
+                                        Comentario requerido
+                                    </span>
+
+                                    }
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-4"
+                        [disabled]="registerForm.invalid || juegosInvalidos || loading() ">
+
+                        Enviar respuesta
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+

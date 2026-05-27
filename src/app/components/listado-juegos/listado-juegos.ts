@@ -72,8 +72,6 @@ export class ListadoJuegos implements OnInit {
 
   async ngOnInit() {
 
-    console.log('listado juegos init');
-
     await this.traerPuntuaciones()
 
   }
@@ -84,7 +82,6 @@ export class ListadoJuegos implements OnInit {
 
     this.listadoPuntuaciones.set(puntuaciones ?? []);
 
-    console.log('puntuaciones', this.listaAhorcado);
 
 
   }

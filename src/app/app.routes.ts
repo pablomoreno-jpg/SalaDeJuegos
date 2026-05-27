@@ -2,12 +2,13 @@ import { Routes } from '@angular/router';
 import { Login } from './components/login/login';
 import { Home } from './components/home/home';
 import { Registro } from './components/registro/registro';
-import { authGuard, noAuthGuard } from './guard/auth';
+import { authGuard, noAuthGuard, adminGuard } from './guard/auth';
 
 export const routes: Routes = [
 
     { path: 'login', component: Login, canActivate: [noAuthGuard] },
     { path: 'registro', component: Registro, canActivate: [noAuthGuard] },
+    { path: 'resultados', loadComponent: () => import('./components/resultados/resultados').then(c => c.Resultados), canActivate: [adminGuard] },
     {
         path: 'home',
         component: Home,
@@ -19,6 +20,8 @@ export const routes: Routes = [
             { path: 'preguntados', loadComponent: () => import('./components/preguntados/preguntados').then(c => c.Preguntados) },
             { path: 'simplebj', loadComponent: () => import('./components/simple-black-jack/simple-black-jack').then(c => c.SimpleBlackJack) },
             { path: 'listadojuegos', loadComponent: () => import('./components/listado-juegos/listado-juegos').then(c => c.ListadoJuegos) },
+            { path: 'encuesta', loadComponent: () => import('./components/encuesta/encuesta').then(c => c.Encuesta) },
+
         ]
 
     },

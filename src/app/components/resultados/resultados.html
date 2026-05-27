@@ -1,0 +1,120 @@
+<div class="container py-4">
+
+    <button class="btn-primary" routerLink="/home" routerLinkActive="active">
+
+        <i class="bi bi-arrow-left back"></i>
+
+    </button>
+
+    <div class="encuestas-wrapper d-flex flex-column gap-4">
+
+        @for(encuesta of listaDeEncuestas(); track $index){
+
+        <div class="encuesta-card">
+
+            <!-- HEADER -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+                    <h3 class="nombre">
+                        {{encuesta.nombre}} {{encuesta.apellido}}
+                    </h3>
+
+                    <div class="fecha">
+                        <i class="bi bi-calendar-event"></i>
+
+                        {{encuesta.created_at |
+                        date:'dd/MM/yyyy HH:mm':'America/Argentina/Buenos_Aires'}}
+                    </div>
+                </div>
+
+                <div class="badge-satisfaccion">
+                    {{encuesta.satifaccion}}
+                </div>
+
+            </div>
+
+            <!-- DATOS -->
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="dato-box">
+                        <i class="bi bi-person-fill"></i>
+
+                        <div>
+                            <span class="label">
+                                Edad
+                            </span>
+
+                            <p>
+                                {{encuesta.edad}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="dato-box">
+                        <i class="bi bi-telephone-fill"></i>
+
+                        <div>
+                            <span class="label">
+                                Teléfono
+                            </span>
+
+                            <p>
+                                {{encuesta.telefono}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="dato-box">
+                        <i class="bi bi-controller"></i>
+
+                        <div>
+                            <span class="label">
+                                Juegos que le gustaron
+                            </span>
+
+                            <p>
+                                {{encuesta.juegos}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="dato-box">
+                        <i class="bi bi-chat-left-text-fill"></i>
+
+                        <div>
+                            <span class="label">
+                                Opinión
+                            </span>
+
+                            <p>
+                                {{encuesta.opinion}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+</div>

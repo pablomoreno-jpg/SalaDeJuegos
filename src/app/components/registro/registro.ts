@@ -54,12 +54,6 @@ export class Registro {
     this.loading.set(false);
   }
 
-  async subirPuntuancionJuego(){
-    
-    
-  
-  }
-
   volver() {
     this._location.back();
   }

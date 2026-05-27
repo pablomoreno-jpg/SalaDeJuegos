@@ -3,6 +3,7 @@ import { AuthServise } from "./auth";
 import { SupabaseService } from "./supabaseService";
 import { Persona } from "../models/persona";
 import { juegoInterfaceInsert, juegoInterfaceSelect } from '../models/juegoModel';
+import { EncuestaModel , EncuestaSelect } from '../models/encuestaModel';
 
 
 @Injectable({
@@ -92,3 +93,49 @@ export class GameService {
         return data as juegoInterfaceSelect[];
     }
 }
+
+
+@Injectable({
+    providedIn: 'root',
+})
+export class EncuestaServices {
+
+    private auth = inject(AuthServise);
+    private supabase = inject(SupabaseService);
+
+
+    async subirEncuesta(encuesta: EncuestaModel): Promise<Boolean>{
+
+        const nuevaEncuesta: EncuestaModel = {
+            ...encuesta,
+            id_usuario: this.auth.user()?.id
+        }
+
+        const {data,error} = await this.supabase.getCliente().from('encuesta').insert(nuevaEncuesta)
+
+        if(error){
+
+            console.log(error.cause,error.message);
+            return false;
+        }
+
+        return true
+    }
+
+    async traerEncuesta(): Promise<EncuestaSelect[]>{
+
+        const {data, error} = await this.supabase.getCliente().from('encuesta').select('*,usuarios(email)');
+
+        if(error){
+
+            console.log(error.cause, error.message);
+
+            return [];
+        }
+
+        return data as EncuestaSelect[];
+
+    }
+
+}
+
